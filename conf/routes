@@ -1,13 +1,23 @@
+
 # Routes
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-# Default path will just redirect to the computer list
-GET     /                           controllers.LoginController.index(request: Request)
+# An example controller showing a sample home page
+GET     /                           controllers.HomeController.index()
+GET     /login                      controllers.HomeController.loginHandler(request:Request)
 
-# Computers list (look at the default values for pagination parameters)
-POST     /register                  controllers.LoginController.registerUser(request: Request)
+GET     /signup                     controllers.HomeController.signup()
 
-# Add computer
-POST     /loginUser             controllers.LoginController.loginUser(request: Request)
-GET     /login             controllers.LoginController.login(request: Request)
+GET     /register                   controllers.HomeController.signupHandler(request:Request)
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
+
+GET     /addStudent                 controllers.HomeController.addStudentHandler(request:Request)
+
+GET     /searchStudent              controllers.HomeController.searchStudent(request:Request)
+
+GET     /add                        controllers.HomeController.add()
+
+GET     /search                     controllers.HomeController.search()

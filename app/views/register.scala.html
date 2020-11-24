@@ -28,7 +28,7 @@
         <div class="row">
             <div class="card col s4 offset-s4 ">
                 <div class="card-panel">
-                    <form action="@routes.HomeController.loginHandler()" method="GET">
+                    <form action="@routes.HomeController.signupHandler()" method="GET">
 
                         <div class="row">
                             <div class="input-field col s12">
@@ -50,10 +50,11 @@
                             </div>
                             <br>
                         }
+
                         <div class="row">
                             <button id="api-search-button" class="btn col s4 offset-s4" type="submit">Submit</button>
                         </div>
-                        <a href="@routes.HomeController.signup()">REGISTER</a>
+
                     </form>
                 </div>
             </div>

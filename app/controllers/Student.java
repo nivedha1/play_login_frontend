@@ -1,4 +1,5 @@
-package util;
+package controllers;
+
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import play.libs.Json;
 import play.libs.ws.WSClient;
@@ -6,17 +7,27 @@ import play.libs.ws.WSRequest;
 import play.libs.ws.WSResponse;
 
 import java.util.concurrent.CompletionStage;
-public class WSHelper {
 
+public class Student {
 
-    public CompletionStage<WSResponse> checkAuthorized(String username,String password) {
+    private String studentname;
 
-        WSClient ws = play.test.WSTestClient.newClient(9011);
+    public String getStudentname() {
+        return studentname;
+    }
+
+    public void setStudentname(String studentname) {
+        this.studentname = studentname;
+    }
+
+    public CompletionStage<WSResponse> searchStudent() {
+
+        WSClient ws = play.test.WSTestClient.newClient(9012);
         //add username password
-        WSRequest request = ws.url("http://localhost:9011/login");
+        WSRequest request = ws.url("http://localhost:9012/search");
         ObjectNode res = Json.newObject();
-        res.put("username",username);
-        res.put("password",password);
+        res.put("studentname", this.studentname);
+
         return request.addHeader("Content-Type", "application/json")
                 .post(res)
                 .thenApply((WSResponse r) -> {
@@ -24,25 +35,18 @@ public class WSHelper {
                 });
     }
 
+    public CompletionStage<WSResponse> addStudent() {
 
-
-    public  CompletionStage<WSResponse> registerUser(String username,String password) {
-
-        WSClient ws = play.test.WSTestClient.newClient(9011);
+        WSClient ws = play.test.WSTestClient.newClient(9012);
         // send this. user
         ObjectNode res = Json.newObject();
-        res.put("username", username);
-        res.put("password",password);
+        res.put("studentname", this.studentname);
 
-        System.out.println(username);
-        System.out.println(password);
-
-        WSRequest request = ws.url("http://localhost:9011/register");
+        WSRequest request = ws.url("http://localhost:9012/addStudent");
         return request.addHeader("Content-Type", "application/json")
                 .post(res)
                 .thenApply((WSResponse r) -> {
                     return r;
                 });
     }
-
 }

@@ -28,32 +28,21 @@
         <div class="row">
             <div class="card col s4 offset-s4 ">
                 <div class="card-panel">
-                    <form action="@routes.HomeController.loginHandler()" method="GET">
+                    <form action="@routes.HomeController.addStudentHandler()" method="GET">
+
 
                         <div class="row">
                             <div class="input-field col s12">
 
-                                <input id="username" name="username" type="text" class="validate">
-                                <label for="username">Username</label>
+                                <input id="studentname" name="studentname"  >
+                                <label for="studentname">Student Name</label>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="input-field col s12">
 
-                                <input id="password" name="password" type="password" class="validate">
-                                <label for="password">Password</label>
-                            </div>
-                        </div>
-                        @if(authorizeMessage!= null){
-                            <div class="alert alert-primary" role="alert">
-                            @authorizeMessage
-                            </div>
-                            <br>
-                        }
                         <div class="row">
-                            <button id="api-search-button" class="btn col s4 offset-s4" type="submit">Submit</button>
+                            <button id="api-search-button" class="btn col s4 offset-s4" type="submit">ADD STUDENT</button>
                         </div>
-                        <a href="@routes.HomeController.signup()">REGISTER</a>
+
                     </form>
                 </div>
             </div>
